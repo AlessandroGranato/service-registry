@@ -1,0 +1,6 @@
+## PROPS ##
+SERVER_PORT: 8761
+LOGGING_LEVEL: DEBUG
+SREG_USERNAME: eureka-user
+SREG_PASSWORD: eureka-pw
+SREG_URL: localhost
