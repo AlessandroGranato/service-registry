@@ -1,0 +1,31 @@
+clientApp:
+  name: 'service-registry'
+
+# APP ##
+server:
+  port : ${SERVER_PORT}
+
+spring:
+  security:
+    basic:
+      enabled: true
+    user:
+      name: ${SREG_USERNAME}
+      password: ${SREG_PASSWORD}
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${SREG_USERNAME}:${SREG_PASSWORD}@${SREG_URL}:${SERVER_PORT}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+
+
+## LOG ##
+logging:
+  level:
+    com.pyrosandro.serviceRegistry: ${LOGGING_LEVEL}
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
